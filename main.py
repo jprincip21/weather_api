@@ -6,7 +6,13 @@ app = Flask(__name__) # Create a Flask instance named Website
 
 @app.route("/") #Decorator connects app.route to home function
 def home():
-    return render_template("home.html") # Render_template looks for a templates folder and finds the file we are requesting
+
+    filepath = "data/stations.txt"
+    stations = pd.read_csv(filepath, skiprows=17)
+    stations = stations[["STAID", "STANAME                                 "]]
+    # Render_template looks for a templates folder and finds the file we are requesting
+    #.to_html() changes the stations variable from a data frame to html code
+    return render_template("home.html", data=stations.to_html())
 
 @app.route("/api/v1/<station>/<date>") # <> Means user can enter a value
 def about(station, date):

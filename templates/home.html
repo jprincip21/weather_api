@@ -8,6 +8,8 @@
         <h1>Weather Data API</h1>
         <p>URL format: http://127.0.0.1:5001/api/v1/station/yyyymmdd</p>
         <p>URL example: http://127.0.0.1:5001/api/v1/10/1988-10-25</p>
-
+        <!-- {{data}} allows us to send data from flask to html file through a variable-->
+        <!-- safe keyword will render the html table we had sent through the data variable-->
+        <p>{{data|safe}}</p>
     </body>
 </html>
